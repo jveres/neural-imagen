@@ -8,7 +8,7 @@ setup(
     license="AGPLv3+",
     keywords="deeplearning graphics",
     url="https://github.com/alexjc/neural-imagen",
-    packages=['imagen'],
+    packages=setuptools.find_packages(),,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Topic :: Utilities",

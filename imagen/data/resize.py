@@ -9,7 +9,7 @@ class DownscaleBuilder:
     def __init__(self, factor, channels=3):
         self.downscaler = torch.nn.Sequential(
             torch.nn.Conv2d(channels, channels, groups=channels,
-                            kernel_size=(factor, factor), stride=(factor, factor)).cuda()
+                            kernel_size=(factor, factor), stride=(factor, factor))
         )
 
         self.downscaler[0].bias.data[:] = 0.0

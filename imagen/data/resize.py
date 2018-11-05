@@ -12,7 +12,6 @@ class DownscaleBuilder:
                             kernel_size=(factor, factor), stride=(factor, factor))
         )
 
-        self.downscaler = self.downscaler.clone()
         self.downscaler[0].bias[:] = 0.0
         self.downscaler[0].weight[:,0,:,:] = 1.0 / (factor ** 2)
 

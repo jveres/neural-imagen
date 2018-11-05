@@ -9,14 +9,14 @@ class DownscaleBuilder:
     def __init__(self, factor, channels=3):
         self.downscaler = torch.nn.Sequential(
             torch.nn.Conv2d(channels, channels, groups=channels,
-                            kernel_size=(factor, factor), stride=(factor, factor))
+                            kernel_size=(factor, factor), stride=(factor, factor)).cuda()
         )
 
         self.downscaler[0].bias.data[:] = 0.0
         self.downscaler[0].weight[:,0,:,:] = 1.0 / (factor ** 2)
 
     def build(self, image):
-        return self.downscaler(image.cuda())
+        return self.downscaler(image)
 
 
 class UpscaleBuilder:
